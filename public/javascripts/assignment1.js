@@ -7,3 +7,48 @@
  * garage holds. (Only needs to run once).
  */
 
+"use strict";
+const PROMPT = require ('readline-sync');
+
+let lotNumber, bedroom, bathroom, garage, bedrooms, bathrooms, cars;
+let finalPrice;
+
+const basePrice = 50000;
+const bedPrice = 17000;
+const bathPrice = 12500;
+const garagePrice = 6000;
+
+
+function main() {
+    setLotNumber();
+    setNumberOfBedrooms();
+    setNumberOfBathrooms();
+    setGarageSize();
+    setFinalPrice();
+}
+
+main();
+
+function setLotNumber() {
+    lotNumber = PROMPT.question(' \nWhat is the lot number?: ');
+}
+
+function setNumberOfBedrooms() {
+    bedroom = PROMPT.question(' \nHow many bedrooms?: ');
+    bedrooms = bedPrice * bedroom;
+}
+
+function setNumberOfBathrooms() {
+    bathroom = PROMPT.question(' \nHow many bathrooms?: ');
+    bathrooms = bathPrice * bathroom;
+}
+
+function setGarageSize() {
+    garage = PROMPT.question(' \nHow many car garage?: ');
+    cars = garagePrice * garage;
+}
+
+function setFinalPrice() {
+    finalPrice = basePrice + cars + bathrooms + bedrooms;
+    console.log("\nYour total is..." + finalPrice);
+}
